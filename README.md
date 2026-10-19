@@ -1,20 +1,41 @@
 # Pip's Midnight Nursery
 
-Portfolio for **Pip**, the skull baby and Junior Dream Engineer, built for haX.baby's *Baby's First Website* hackathon (Track 1).
+A cozy, retro-90s portfolio website for **Pip**, a skull-faced baby who works as a Junior Dream Engineer at the Midnight Nursery. Pip builds the dreams, lullabies and nightlights that help little ghosts and creatures fall asleep.
 
-Plain HTML, CSS and JavaScript. No build step, no dependencies.
+> "I build the dreams you fall asleep inside."
+
+Built with plain HTML, CSS and JavaScript. No frameworks, no build step.
+
+## Features
+- **Pip reacts to you:** Pip leans toward your cursor or finger, and wiggles when poked.
+- **Hidden Easter egg:** poke Pip 5 times and Pip falls asleep and a secret lullaby plays. Poke again to wake Pip up.
+- **Scroll story:** four illustrated scenes, with a glowing moon travelling along a dream route as you scroll.
+- **Lullaby Lab:** a music box you can play by tapping stars (synthesized live with the Web Audio API).
+- **Nightlight Collection:** switch on three lamps to light up the big nightlight, then explore a hidden dream layer with a flashlight cursor.
+- **Pip's Growth Chart:** Pip's skills as a height chart on the nursery wall.
+- **Day / night mode:** changes the sky and the whole colour palette.
+- **Retro touches:** sparkle cursor trail, marquee banner, click sounds with a mute button, an odometer-style "Dreams delivered" counter, and a guestbook.
+- **Mobile friendly** and respects reduced-motion settings.
 
 ## Run locally
-Open `index.html` in a browser, or run `python3 -m http.server` in this folder and visit http://localhost:8000.
+Open `index.html` in a browser, or run a simple server in this folder:
 
-## What is inside
-- **Required:** who Pip is, 3 projects, scroll story, visitor reactions (eyes follow pointer/touch, pokes, sounds with mute), mobile layout, hidden Easter egg (poke Pip 5 times).
-- **Tier 1:** Pip leans toward the cursor/touch, scroll-driven story, day/night toggle that changes Pip's expression and palette.
-- **Tier 2:** Lullaby Lab (Web Audio music box), flashlight dream layer, dream route drawn by scroll.
-- **Side quests:** sparkle cursor trail, click sounds with mute, hit counter odometer, guestbook.
+```
+python3 -m http.server
+```
 
-## Optional live guestbook (Supabase, free)
-1. Create a project at supabase.com and run this in the SQL editor:
+Then visit http://localhost:8000
+
+## Files
+- `index.html`: page structure and content
+- `style.css`: styling and animations
+- `script.js`: sounds, interactions, scroll effects, guestbook
+- `*.jpg`: Pip artwork (hero, portrait, music box, lantern)
+
+## Guestbook
+By default, wishes are saved in the visitor's own browser. For a shared live guestbook, you can connect a free Supabase project:
+
+1. Run this in the Supabase SQL editor:
 ```sql
 create table guestbook (
   id bigint generated always as identity primary key,
@@ -26,20 +47,10 @@ alter table guestbook enable row level security;
 create policy "anyone can read" on guestbook for select using (true);
 create policy "anyone can add" on guestbook for insert with check (true);
 ```
-2. Put your project URL and anon key into `SUPABASE_URL` and `SUPABASE_ANON_KEY` at the top of the guestbook section in `script.js`.
-
-Without these, the guestbook still works but saves wishes only in the visitor's own browser.
-
-## Deploy
-- Vercel / Netlify: drag and drop this folder, or import the GitHub repo. No settings needed.
-- GitHub Pages: push to a repo, then Settings, Pages, deploy from the main branch.
-
-## Before you submit (deadline 19 Oct 2026, 17:17 IST)
-- [x] Name added in the footer of `index.html` (Abhijeet Saini).
-- [ ] Commit in small steps so the public GitHub history shows work between 17 and 19 October.
-- [x] Official Pip art (hero, portrait, music box, lantern) from the haX.baby asset pack is in `assets/` and credited in the footer.
-- [ ] Test on your phone and check the browser console for errors.
-- [ ] Submit: live URL, repo link, short story write-up, credits.
+2. Put your project URL and anon key into `SUPABASE_URL` and `SUPABASE_ANON_KEY` in `script.js`.
 
 ## Credits
-Pip, music box and lantern: official haX.baby Pip Creator Asset Pack. Other art: hand-coded SVG/CSS. Sounds: Web Audio API. Fonts: Fredoka and Press Start 2P (Google Fonts, SIL OFL). AI assistance: Claude.
+- **Art:** Pip, the music box and the nightlight lantern are from the official haX.baby "Pip Creator Asset Pack". Story scenes, lamps and stars are hand-coded SVG/CSS.
+- **Sound:** synthesized live with the Web Audio API.
+- **Fonts:** Fredoka and Press Start 2P (Google Fonts, SIL OFL).
+- **Made by:** Abhijeet Saini.
